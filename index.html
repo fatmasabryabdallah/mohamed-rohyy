@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8f6">
+  <title>FATMA &amp; MOHAMED</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fffaf8;
+      --ink: #49323a;
+      --muted: #846f76;
+      --rose: #dc7897;
+      --rose-dark: #ad365e;
+      --blush: #f9e0e7;
+      --sage: #b99aa5;
+      --line: rgba(173, 54, 94, .16);
+      --serif: Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Cairo", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(1160px, calc(100% - 56px)); margin-inline: auto; }
+
+    .topbar {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font: 700 13px "DM Sans", sans-serif; letter-spacing: .06em; direction: ltr; }
+    .brand-mark {
+      width: 34px; height: 34px; display: grid; place-items: center;
+      border-radius: 50%; background: #ead4da; color: var(--rose-dark); font-size: 17px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 34px; color: #6f6260; font-size: 13px; }
+    .nav-links a:hover { color: var(--rose-dark); }
+    .customize-button, .button-primary, .button-soft {
+      border: 0; cursor: pointer; border-radius: 999px; transition: .2s ease;
+    }
+    .customize-button {
+      padding: 10px 17px; background: #fffaf6; border: 1px solid var(--line);
+      font-size: 12px; font-weight: 700;
+    }
+    .customize-button:hover, .button-soft:hover { transform: translateY(-2px); border-color: #b87788; }
+
+    .hero {
+      min-height: 610px; display: grid; grid-template-columns: 1.02fr .98fr;
+      align-items: center; gap: 52px; padding: 72px 0 86px;
+    }
+    .eyebrow {
+      display: flex; align-items: center; gap: 10px; color: var(--rose-dark);
+      font-family: "DM Sans", sans-serif; font-size: 10px; letter-spacing: .19em; font-weight: 700;
+    }
+    .eyebrow::before { content: ""; width: 27px; height: 1px; background: var(--rose); }
+    .fatiha-date-hero {
+      display: grid;
+      gap: 6px;
+      color: var(--rose-dark);
+      font-family: "DM Sans", sans-serif;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    .fatiha-date-hero span { font-size: 14px; }
+    .fatiha-date-hero time { font-size: clamp(28px, 3.4vw, 40px); direction: ltr; }
+    h1 { margin: 20px 0 14px; font-size: clamp(46px, 6.5vw, 76px); line-height: 1.25; letter-spacing: -.055em; }
+    h1 em { color: var(--rose); font-family: var(--serif); font-weight: 400; }
+    .couple-title { display: inline-block; direction: ltr; white-space: nowrap; font: 700 clamp(28px, 4.3vw, 50px) "DM Sans", sans-serif; letter-spacing: .025em; }
+    .hero-copy { max-width: 560px; margin: 18px 0 0; color: var(--rose-dark); line-height: 1.9; font-size: clamp(22px, 3vw, 34px); font-weight: 800; }
+    .hero-actions { display: flex; align-items: center; gap: 13px; margin-top: 29px; }
+    .button-primary { padding: 13px 22px; background: var(--rose-dark); color: #fffaf6; font-size: 13px; font-weight: 700; box-shadow: 0 9px 22px #75253f2b; }
+    .button-primary:hover { transform: translateY(-2px); background: #5e1b31; }
+    .button-soft { padding: 12px 18px; background: transparent; border: 1px solid var(--line); font-size: 13px; }
+    .note { margin-top: 23px; font-family: "Cairo", sans-serif; color: var(--rose-dark); font-size: clamp(20px, 2.7vw, 30px); font-weight: 800; line-height: 1.6; }
+
+    .hero-art { min-height: 420px; position: relative; display: grid; place-items: center; }
+    .hero-blob {
+      position: absolute; width: min(400px, 88%); aspect-ratio: 1; border-radius: 48% 52% 60% 40% / 42% 46% 54% 58%;
+      background: #f8e1e7; transform: rotate(-8deg);
+    }
+    .hero-photo {
+      position: relative; width: min(302px, 70%); height: 380px; padding: 10px 10px 47px;
+      background: #fffdf9; box-shadow: 0 24px 65px #67494424; transform: rotate(4deg);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-caption { position: absolute; inset-inline: 0; bottom: 8px; text-align: center; font-family: "Cairo", sans-serif; color: var(--rose-dark); font-size: clamp(20px, 2.6vw, 28px); font-weight: 800; line-height: 1.3; }
+    .sparkle { position: absolute; z-index: 2; color: var(--rose); font-size: 23px; }
+    .sparkle.one { inset-inline-start: 10%; top: 13%; }
+    .sparkle.two { inset-inline-end: 7%; bottom: 17%; color: #9ca68f; font-size: 30px; }
+    .round-stamp {
+      position: absolute; z-index: 2; inset-inline-start: 6%; bottom: 12%;
+      display: grid; place-items: center; width: 83px; height: 83px; border-radius: 50%;
+      background: #f5e8ea; color: var(--rose-dark); border: 1px solid #fff;
+      font-family: var(--serif); font-size: 26px; transform: rotate(-12deg);
+    }
+
+    .section { padding: 83px 0; border-top: 1px solid var(--line); }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 34px; }
+    .section-kicker { color: var(--rose-dark); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+    h2 { margin: 8px 0 0; font-size: clamp(30px, 4vw, 43px); line-height: 1.4; letter-spacing: -.04em; }
+    .section-intro { max-width: 350px; margin: 0 0 5px; color: var(--muted); font-size: 13px; line-height: 1.9; }
+
+    .memory-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 19px; }
+    .memory-card { overflow: hidden; background: #fffaf6; border: 1px solid #e9dfd8; }
+    .memory-image { height: 330px; overflow: hidden; background: #eadde0; }
+    .memory-image img { width: 100%; height: 100%; object-fit: contain; transition: filter .3s; }
+    .memory-card:hover img { filter: brightness(.96); }
+    .memory-text { padding: 16px 14px; background: #fffaf6; text-align: center; }
+    .memory-text h3 { margin: 0; color: var(--rose-dark); font-size: 16px; }
+
+    .birthday-section { background: #f5eeeb; }
+    .birthday-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 17px; }
+    .birthday-card {
+      display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 17px;
+      padding: 23px; background: #fffaf7; border: 1px solid #e9d9dc;
+    }
+    .birthday-icon {
+      width: 55px; height: 55px; display: grid; place-items: center; border-radius: 50%;
+      background: #f1e1e4; color: var(--rose-dark); font-size: 24px;
+    }
+    .birthday-label { color: var(--rose-dark); font-size: 11px; font-weight: 700; }
+    .birthday-card h3 { margin: 4px 0; font-size: 18px; }
+    .birthday-date { color: var(--muted); font-size: 12px; }
+    .birthday-countdown { grid-column: 1 / -1; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .birthday-countdown strong { color: var(--rose-dark); font-size: 15px; }
+
+    .gallery-section { background: #fdf1f3; }
+    .gallery-tools { display: flex; align-items: center; gap: 12px; }
+    .upload-label { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+    .upload-label input { display: none; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 250px; gap: 13px; }
+    .gallery-item {
+      position: relative; display: grid; grid-template-rows: minmax(0, 1fr) auto;
+      overflow: hidden; cursor: zoom-in; background: linear-gradient(145deg, #fffaf7, #ead6dc);
+      border: 1px solid #ddc3ca;
+    }
+    .gallery-item:nth-child(6n + 1), .gallery-item:nth-child(6n + 5) { grid-row: span 2; }
+    .gallery-item img { width: 100%; height: 100%; min-height: 0; padding: 8px; object-fit: contain; transition: filter .25s; }
+    .gallery-item:hover img { filter: brightness(.96); }
+    .gallery-caption { padding: 9px 10px; background: #75253f; color: #fffaf6; text-align: center; font-size: 12px; font-weight: 600; }
+    .delete-photo {
+      position: absolute; z-index: 2; top: 10px; inset-inline-end: 10px; width: 32px; height: 32px;
+      border: 0; border-radius: 50%; background: #fffaf2e8; color: #5c4140; cursor: pointer;
+      opacity: 0; transition: opacity .2s;
+    }
+    .gallery-item:hover .delete-photo, .delete-photo:focus-visible { opacity: 1; }
+    .empty-hint { display: none; grid-column: 1 / -1; padding: 35px; text-align: center; border: 1px dashed #bfaaa1; color: var(--muted); }
+
+    .promise { position: relative; overflow: hidden; padding: 87px 0; text-align: center; background: #fbe9ed; }
+    .promise .eyebrow { justify-content: center; }
+    .promise .eyebrow::after { content: ""; width: 27px; height: 1px; background: var(--rose); }
+    .promise h2 { max-width: 700px; margin: 19px auto 13px; }
+    .promise p { color: #777b70; font-size: 13px; }
+    .promise-hearts {
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+      max-width: 610px; gap: 8px 15px; margin: 20px auto 0; color: #d7193f; font-size: 25px;
+    }
+    .promise-hearts span:nth-child(3n) { font-size: 37px; transform: translateY(-5px); }
+    .promise-hearts span:nth-child(4n) { font-size: 20px; transform: translateY(4px); }
+    .date-counter { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; color: #687360; font-size: 13px; }
+    .date-counter strong { color: #46513f; font-family: "DM Sans", sans-serif; font-size: 19px; }
+
+    footer { display: flex; align-items: center; justify-content: space-between; padding: 25px 0; color: var(--muted); font-size: 11px; }
+    .footer-heart { color: var(--rose); }
+    dialog {
+      width: min(440px, calc(100% - 32px)); border: 0; border-radius: 8px; padding: 0;
+      color: var(--ink); background: #fffaf6; box-shadow: 0 24px 90px #32212055;
+    }
+    dialog::backdrop { background: #30242180; backdrop-filter: blur(3px); }
+    .dialog-inner { padding: 28px; }
+    .dialog-top { display: flex; align-items: start; justify-content: space-between; gap: 15px; }
+    .dialog-top h2 { font-size: 25px; margin: 0; }
+    .dialog-top p { margin: 5px 0 20px; color: var(--muted); font-size: 12px; }
+    .close-dialog { width: 33px; height: 33px; border: 1px solid var(--line); border-radius: 50%; background: none; cursor: pointer; }
+    .field { display: grid; gap: 7px; margin-top: 14px; }
+    .field label { color: #776763; font-size: 12px; font-weight: 700; }
+    .field input { width: 100%; padding: 11px 13px; border: 1px solid #e5d8d0; border-radius: 4px; background: white; outline-color: var(--rose); direction: rtl; }
+    .dialog-actions { display: flex; justify-content: end; gap: 10px; margin-top: 23px; }
+    .lightbox { width: min(900px, calc(100% - 24px)); background: #221d1b; }
+    .lightbox img { width: 100%; max-height: 82vh; object-fit: contain; }
+    .lightbox-close { position: absolute; top: 12px; inset-inline-end: 12px; color: white; border-color: #ffffff70; background: #0005; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    :focus-visible { outline: 2px solid var(--rose-dark); outline-offset: 3px; }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, 580px); }
+      .topbar { height: 70px; }
+      .nav-links { display: none; }
+      .customize-button { padding: 8px 12px; font-size: 11px; }
+      .hero { grid-template-columns: 1fr; gap: 20px; padding: 54px 0 55px; }
+      .hero-copy-block { text-align: center; }
+      .eyebrow { justify-content: center; }
+      .hero-copy { margin-inline: auto; }
+      .hero-actions { justify-content: center; }
+      .note { text-align: center; }
+      .hero-art { min-height: 375px; }
+      .hero-photo { height: 330px; width: min(270px, 68%); }
+      .section { padding: 62px 0; }
+      .section-heading { align-items: start; flex-direction: column; }
+      .section-intro { max-width: 480px; }
+      .memory-grid { grid-template-columns: 1fr; gap: 14px; }
+      .memory-card { display: grid; grid-template-columns: 42% 1fr; }
+      .memory-image { height: 250px; }
+      .memory-text { align-self: center; padding: 15px; }
+      .birthday-grid { grid-template-columns: 1fr; }
+      .birthday-card { padding: 18px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; gap: 9px; }
+      .gallery-item:nth-child(6n + 1), .gallery-item:nth-child(6n + 5) { grid-row: span 1; }
+      .gallery-item:nth-child(4n + 1) { grid-row: span 2; }
+      .gallery-tools { width: 100%; }
+      .gallery-tools .button-primary { margin-inline-start: auto; }
+      .delete-photo { opacity: 1; }
+      footer { gap: 10px; }
+    }
+    @media (max-width: 380px) {
+      .wrap { width: calc(100% - 28px); }
+      .hero-actions { flex-direction: column; }
+      .hero-actions > * { width: 100%; justify-content: center; }
+      .memory-card { grid-template-columns: 1fr; }
+      .memory-image { height: 300px; }
+      .birthday-card { grid-template-columns: 76px 1fr; gap: 12px; padding: 13px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar wrap">
+    <a class="brand" href="#" aria-label="FATMA AND MOHAMED"><span class="brand-mark" aria-hidden="true">♡</span><span>FATMA &amp; MOHAMED</span></a>
+    <nav class="nav-links" aria-label="التنقل الرئيسي">
+      <a href="#story">ذكرياتنا</a>
+      <a href="#birthdays">أيامنا</a>
+      <a href="#gallery">صورنا</a>
+      <a href="#forever">وعد صغير</a>
+    </nav>
+    <button class="customize-button" id="openSettings" type="button">✦ خصّصي الصفحة</button>
+  </header>
+
+  <main>
+    <section class="hero wrap" aria-labelledby="heroTitle">
+      <div class="hero-copy-block">
+        <div class="fatiha-date-hero">
+          <span>OUR FATIHA READING DAY</span>
+          <time datetime="2026-09-04">4/9/2026</time>
+        </div>
+        <h1 id="heroTitle"><span class="couple-title" id="coupleTitle">FATMA &amp; MOHAMED</span></h1>
+        <p class="hero-copy">وجودك في حياتي أحلى نعمة، وكل يوم جنبك بيأكدلي إني اخترت حبيبي وسندي.</p>
+        <div class="hero-actions">
+          <a class="button-primary" href="#gallery">شوفوا ذكرياتنا <span aria-hidden="true">♡</span></a>
+          <button class="button-soft" id="heroUpload" type="button">＋ ضيفوا صورة</button>
+        </div>
+        <p class="note">“إنتَ الحتة الحلوة في كل أيامي.”</p>
+      </div>
+      <div class="hero-art" aria-label="صورة رومانسية للذكرى">
+        <div class="hero-blob"></div>
+        <span class="sparkle one" aria-hidden="true">✳</span>
+        <span class="sparkle two" aria-hidden="true">✳</span>
+        <div class="hero-photo">
+          <img src="images/fatma-mohamed-01.png" alt="صورة من ذكريات فاطمه ومحمد">
+          <span class="photo-caption">أحلى مكان… جنبك</span>
+        </div>
+        <div class="round-stamp" aria-hidden="true">♡</div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="story">
+      <div class="section-heading">
+        <div><div class="section-kicker">حاجات صغيرة، ذكريات كبيرة</div></div>
+      </div>
+      <div class="memory-grid">
+        <article class="memory-card">
+          <div class="memory-image"><img src="images/fatma-mohamed-01.png" alt="صورة لفاطمه ومحمد معًا" loading="lazy"></div>
+          <div class="memory-text"><h3>أحلى مكان… جنبك</h3></div>
+        </article>
+        <article class="memory-card">
+          <div class="memory-image"><img src="images/fatma-mohamed-05.png" alt="ذكرى جميلة لفاطمه ومحمد" loading="lazy"></div>
+          <div class="memory-text"><h3>ضحكتنا أحلى تفصيلة</h3></div>
+        </article>
+        <article class="memory-card">
+          <div class="memory-image"><img src="images/fatma-mohamed-11.png" alt="صورة لفاطمه ومحمد معًا" loading="lazy"></div>
+          <div class="memory-text"><h3>كل يوم بيحلى سوا</h3></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="gallery">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><div class="section-kicker">CAMERA ROLL, BUT MAKE IT US</div></div>
+          <div class="gallery-tools">
+            <span class="section-intro" id="photoCount">كل صورة وراها ذكرى ♡</span>
+            <label class="button-primary upload-label">＋ ضيفوا صوركم<input id="photoInput" type="file" accept="image/*" multiple aria-label="اختاروا صور لإضافتها للألبوم"></label>
+          </div>
+        </div>
+        <div class="gallery-grid" id="galleryGrid" aria-live="polite">
+          <div class="empty-hint" id="emptyHint">الألبوم مستني صوركم الحلوة… دوسوا «ضيفوا صوركم» ♡</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section birthday-section" id="birthdays">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><div class="section-kicker">TWO DAYS, DOUBLE THE LOVE</div></div>
+        </div>
+        <div class="birthday-grid">
+          <article class="birthday-card">
+            <div class="birthday-icon" aria-hidden="true">♡</div>
+            <div>
+              <div class="birthday-label">يومك المميز</div>
+              <h3>عيد ميلادك</h3>
+              <div class="birthday-date" id="firstBirthdayDate"></div>
+            </div>
+            <div class="birthday-countdown" id="firstBirthdayCountdown" aria-live="polite"></div>
+          </article>
+          <article class="birthday-card">
+            <div class="birthday-icon" aria-hidden="true">♥</div>
+            <div>
+              <div class="birthday-label">يومه المميز</div>
+              <h3>عيد ميلاده</h3>
+              <div class="birthday-date" id="secondBirthdayDate"></div>
+            </div>
+            <div class="birthday-countdown" id="secondBirthdayCountdown" aria-live="polite"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="promise" id="forever">
+      <div class="wrap">
+        <div class="eyebrow">MY LOVE MOHAMED</div>
+        <div class="promise-hearts" aria-label="قلوب حمراء" aria-hidden="true"><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span>FATMA <span class="footer-heart">♥</span> MOHAMED</span>
+  </footer>
+
+  <dialog id="settingsDialog" aria-labelledby="settingsTitle">
+    <form class="dialog-inner" id="settingsForm">
+      <div class="dialog-top">
+        <div><h2 id="settingsTitle">تخصيص الصفحة</h2><p>الأسماء والتواريخ اللي تظهر فيها.</p></div>
+        <button class="close-dialog" type="button" data-close="settingsDialog" aria-label="إغلاق">×</button>
+      </div>
+      <div class="field"><label for="firstName">اسمك</label><input id="firstName" maxlength="24" placeholder="مثال: فاطمة" autocomplete="given-name"></div>
+      <div class="field"><label for="secondName">اسم خطيبك</label><input id="secondName" maxlength="24" placeholder="مثال: محمد" autocomplete="off"></div>
+      <div class="field"><label for="startDate">تاريخ بداية علاقتكم (اختياري)</label><input id="startDate" type="date"></div>
+      <div class="field"><label for="firstBirthday">عيد ميلادك</label><input id="firstBirthday" type="date" required></div>
+      <div class="field"><label for="secondBirthday">عيد ميلاد خطيبك</label><input id="secondBirthday" type="date" required></div>
+      <div class="dialog-actions">
+        <button class="button-soft" type="button" data-close="settingsDialog">إلغاء</button>
+        <button class="button-primary" type="submit">احفظي التغييرات</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog class="lightbox" id="lightbox" aria-label="عرض الصورة بالحجم الكامل">
+    <button class="close-dialog lightbox-close" type="button" data-close="lightbox" aria-label="إغلاق الصورة">×</button>
+    <img id="lightboxImage" alt="">
+  </dialog>
+
+  <script>
+    (() => {
+      const starterPhotos = [
+        { id: "memory-01", src: "images/fatma-mohamed-01.png", caption: "أحلى مكان… جنبك" },
+        { id: "memory-02", src: "images/fatma-mohamed-02.png", caption: "ضحكتك أحلى تفصيلة" },
+        { id: "memory-03", src: "images/fatma-mohamed-03.png", caption: "لحظة صغيرة وفرحة كبيرة" },
+        { id: "memory-04", src: "images/fatma-mohamed-04.png", caption: "كل يوم بيحلى سوا" },
+        { id: "memory-05", src: "images/fatma-mohamed-05.png", caption: "في عيونك راحة" },
+        { id: "memory-06", src: "images/fatma-mohamed-06.png", caption: "مشوارنا المفضل" },
+        { id: "memory-07", src: "images/fatma-mohamed-07.png", caption: "تفاصيل بتفضل في القلب" },
+        { id: "memory-08", src: "images/fatma-mohamed-08.png", caption: "أجمل وقت هو اللي معاك" },
+        { id: "memory-09", src: "images/fatma-mohamed-09.png", caption: "هغير من نفسي في كل حاجة علشانك يا حبيب عمري وأيامي وحياتي" },
+        { id: "memory-10", src: "images/fatma-mohamed-10.png", caption: "حبيب قلب فاطمة ونور عينيها" },
+        { id: "memory-11", src: "images/fatma-mohamed-11.png", caption: "وجودك بيطمن" },
+        { id: "memory-12", src: "images/fatma-mohamed-12.png", caption: "ضحكتنا بتحلي كل حاجة" },
+        { id: "memory-13", src: "images/fatma-mohamed-13.png", caption: "أجمل أيامي جنبك" }
+      ];
+      const settingsKey = "hekayetna-settings-v1";
+      const dbName = "hekayetna-album";
+      let customPhotos = [];
+      let settings = {
+        firstName: "فاطمه",
+        secondName: "محمد",
+        startDate: "",
+        firstBirthday: "2006-05-01",
+        secondBirthday: "2003-10-01"
+      };
+
+      const getSettings = () => {
+        try {
+          const saved = JSON.parse(localStorage.getItem(settingsKey) || "null");
+          if (saved && typeof saved === "object") settings = { ...settings, ...saved };
+          if (settings.firstName === "أنا") settings.firstName = "فاطمه";
+          if (settings.secondName === "إنتَ") settings.secondName = "محمد";
+        } catch (error) {
+          console.warn("تعذر تحميل التخصيصات المحفوظة.", error);
+        }
+      };
+
+      const openDatabase = () => new Promise((resolve, reject) => {
+        if (!("indexedDB" in window)) {
+          reject(new Error("المتصفح لا يدعم حفظ الصور محليًا."));
+          return;
+        }
+        const request = indexedDB.open(dbName, 1);
+        request.onupgradeneeded = () => request.result.createObjectStore("photos", { keyPath: "id" });
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error || new Error("تعذر فتح ألبوم الصور."));
+      });
+      const readPhotos = async () => {
+        const db = await openDatabase();
+        return new Promise((resolve, reject) => {
+          const request = db.transaction("photos", "readonly").objectStore("photos").getAll();
+          request.onsuccess = () => { db.close(); resolve(request.result); };
+          request.onerror = () => { db.close(); reject(request.error || new Error("تعذر تحميل الصور.")); };
+        });
+      };
+      const writePhoto = async photo => {
+        const db = await openDatabase();
+        return new Promise((resolve, reject) => {
+          const tx = db.transaction("photos", "readwrite");
+          tx.objectStore("photos").put(photo);
+          tx.oncomplete = () => { db.close(); resolve(); };
+          tx.onerror = () => { db.close(); reject(tx.error || new Error("تعذر حفظ الصورة.")); };
+          tx.onabort = () => { db.close(); reject(tx.error || new Error("تم إلغاء حفظ الصورة.")); };
+        });
+      };
+      const deletePhoto = async id => {
+        const db = await openDatabase();
+        return new Promise((resolve, reject) => {
+          const tx = db.transaction("photos", "readwrite");
+          tx.objectStore("photos").delete(id);
+          tx.oncomplete = () => { db.close(); resolve(); };
+          tx.onerror = () => { db.close(); reject(tx.error || new Error("تعذر حذف الصورة.")); };
+        });
+      };
+
+      const gallery = document.getElementById("galleryGrid");
+      const count = document.getElementById("photoCount");
+      const emptyHint = document.getElementById("emptyHint");
+      const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      })[char]);
+      const allPhotos = () => [...starterPhotos, ...customPhotos];
+
+      const renderGallery = () => {
+        gallery.querySelectorAll(".gallery-item").forEach(item => item.remove());
+        const photos = allPhotos();
+        emptyHint.style.display = photos.length ? "none" : "block";
+        count.textContent = photos.length ? `${photos.length} ${photos.length === 1 ? "صورة" : "صور"} في ألبومكم ♡` : "ألبومكم مستني أول ذكرى ♡";
+        photos.forEach(photo => {
+          const item = document.createElement("article");
+          item.className = "gallery-item";
+          item.tabIndex = 0;
+          item.setAttribute("role", "button");
+          item.setAttribute("aria-label", `عرض ${photo.caption}`);
+          item.dataset.src = photo.src;
+          item.innerHTML = `<img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.caption)}" loading="lazy"><span class="gallery-caption">${escapeHtml(photo.caption)}</span>${photo.id.startsWith("custom-") ? `<button class="delete-photo" type="button" aria-label="حذف ${escapeHtml(photo.caption)}" title="حذف الصورة">×</button>` : ""}`;
+          gallery.insertBefore(item, emptyHint);
+        });
+      };
+
+      const renderSettings = () => {
+        const firstName = settings.firstName || "فاطمه";
+        const secondName = settings.secondName || "محمد";
+        const names = firstName === "فاطمه" && secondName === "محمد"
+          ? "FATMA & MOHAMED"
+          : `${firstName} & ${secondName}`;
+        document.getElementById("coupleTitle").textContent = names;
+        document.getElementById("firstName").value = settings.firstName === "فاطمه" ? "" : settings.firstName;
+        document.getElementById("secondName").value = settings.secondName === "محمد" ? "" : settings.secondName;
+        document.getElementById("startDate").value = settings.startDate || "";
+        document.getElementById("firstBirthday").value = settings.firstBirthday;
+        document.getElementById("secondBirthday").value = settings.secondBirthday;
+        renderBirthdays();
+      };
+
+      const renderBirthdays = () => {
+        const today = new Date();
+        const todayUtc = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+        const birthdays = [
+          { key: "firstBirthday", dateId: "firstBirthdayDate", countdownId: "firstBirthdayCountdown", label: "عيد ميلادك", futureVerb: "هتتمي" },
+          { key: "secondBirthday", dateId: "secondBirthdayDate", countdownId: "secondBirthdayCountdown", label: "عيد ميلاده", futureVerb: "هيتم" }
+        ];
+        birthdays.forEach(birthday => {
+          const [year, month, day] = settings[birthday.key].split("-").map(Number);
+          if (!year || !month || !day) return;
+          const born = new Date(year, month - 1, day);
+          document.getElementById(birthday.dateId).textContent = new Intl.DateTimeFormat("ar-EG", {
+            day: "numeric", month: "long", year: "numeric"
+          }).format(born);
+
+          let nextYear = today.getFullYear();
+          let next = new Date(nextYear, month - 1, day);
+          if (next < new Date(today.getFullYear(), today.getMonth(), today.getDate())) {
+            nextYear += 1;
+            next = new Date(nextYear, month - 1, day);
+          }
+          const daysLeft = Math.round((Date.UTC(nextYear, month - 1, day) - todayUtc) / 86400000);
+          const age = nextYear - year;
+          const countdown = document.getElementById(birthday.countdownId);
+          countdown.innerHTML = daysLeft === 0
+            ? `النهارده عيد ميلادكوا! <strong>كل سنة وإنتوا طيبين ♡</strong>`
+            : `فاضل <strong>${daysLeft.toLocaleString("ar-EG")} يوم</strong> على ${birthday.label}… ${birthday.futureVerb} <strong>${age.toLocaleString("ar-EG")} سنة</strong> ♡`;
+        });
+      };
+
+      const resizeImage = file => new Promise((resolve, reject) => {
+        const image = new Image();
+        const objectUrl = URL.createObjectURL(file);
+        image.onload = () => {
+          const scale = Math.min(1, 1400 / Math.max(image.naturalWidth, image.naturalHeight));
+          const canvas = document.createElement("canvas");
+          canvas.width = Math.round(image.naturalWidth * scale);
+          canvas.height = Math.round(image.naturalHeight * scale);
+          canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
+          URL.revokeObjectURL(objectUrl);
+          canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error("تعذر تجهيز الصورة.")), "image/jpeg", .82);
+        };
+        image.onerror = () => {
+          URL.revokeObjectURL(objectUrl);
+          reject(new Error(`تعذر قراءة الصورة: ${file.name}`));
+        };
+        image.src = objectUrl;
+      });
+
+      document.getElementById("openSettings").addEventListener("click", () => document.getElementById("settingsDialog").showModal());
+      document.getElementById("settingsForm").addEventListener("submit", event => {
+        event.preventDefault();
+        settings = {
+          firstName: document.getElementById("firstName").value.trim() || "فاطمه",
+          secondName: document.getElementById("secondName").value.trim() || "محمد",
+          startDate: document.getElementById("startDate").value,
+          firstBirthday: document.getElementById("firstBirthday").value,
+          secondBirthday: document.getElementById("secondBirthday").value
+        };
+        try {
+          localStorage.setItem(settingsKey, JSON.stringify(settings));
+          renderSettings();
+          document.getElementById("settingsDialog").close();
+        } catch (error) {
+          console.error("تعذر حفظ التخصيصات.", error);
+          alert("ما قدرناش نحفظ التغييرات. راجعي مساحة التخزين في المتصفح وحاولي تاني.");
+        }
+      });
+      document.querySelectorAll("[data-close]").forEach(button => button.addEventListener("click", () => document.getElementById(button.dataset.close).close()));
+
+      const picker = document.getElementById("photoInput");
+      document.getElementById("heroUpload").addEventListener("click", () => picker.click());
+      picker.addEventListener("change", async () => {
+        const files = [...picker.files].filter(file => file.type.startsWith("image/"));
+        if (!files.length) return;
+        let failures = 0;
+        for (const file of files) {
+          try {
+            const blob = await resizeImage(file);
+            const photo = { id: `custom-${crypto.randomUUID()}`, src: URL.createObjectURL(blob), blob, caption: file.name.replace(/\.[^.]+$/, "").slice(0, 48) || "لحظة حلوة" };
+            await writePhoto(photo);
+          } catch (error) {
+            failures += 1;
+            console.error("تعذرت إضافة صورة.", error);
+          }
+        }
+        try {
+          customPhotos = await readPhotos();
+          renderGallery();
+          if (failures) alert(`اتضافت الصور المتاحة، لكن تعذرت إضافة ${failures} صورة. جربي صورة بصيغة مختلفة.`);
+        } catch (error) {
+          console.error("تعذر تحديث الألبوم.", error);
+          alert("تعذر حفظ الصور في هذا المتصفح. جربي متصفحًا آخر أو راجعي مساحة التخزين.");
+        }
+        picker.value = "";
+      });
+
+      const showPhoto = item => {
+        document.getElementById("lightboxImage").src = item.dataset.src;
+        document.getElementById("lightboxImage").alt = item.querySelector("img").alt;
+        document.getElementById("lightbox").showModal();
+      };
+      gallery.addEventListener("click", async event => {
+        const item = event.target.closest(".gallery-item");
+        if (!item) return;
+        if (event.target.closest(".delete-photo")) {
+          const photo = customPhotos.find(entry => entry.src === item.dataset.src);
+          if (!photo) return;
+          try {
+            await deletePhoto(photo.id);
+            customPhotos = customPhotos.filter(entry => entry.id !== photo.id);
+            URL.revokeObjectURL(photo.src);
+            renderGallery();
+          } catch (error) {
+            console.error("تعذر حذف الصورة.", error);
+            alert("ما قدرناش نحذف الصورة دلوقتي. حاولي تاني.");
+          }
+          return;
+        }
+        showPhoto(item);
+      });
+      gallery.addEventListener("keydown", event => {
+        if ((event.key === "Enter" || event.key === " ") && event.target.matches(".gallery-item")) {
+          event.preventDefault();
+          showPhoto(event.target);
+        }
+      });
+      document.getElementById("lightbox").addEventListener("click", event => {
+        if (event.target === event.currentTarget) event.currentTarget.close();
+      });
+
+      const init = async () => {
+        getSettings();
+        renderSettings();
+        try {
+          customPhotos = await readPhotos();
+        } catch (error) {
+          console.error("تعذر تحميل صور الألبوم.", error);
+          alert("تعذر فتح ألبوم الصور المحفوظ. تقدري تستخدمي صور الصفحة، لكن إضافة صور جديدة قد لا تعمل.");
+        }
+        customPhotos = customPhotos.map(photo => ({ ...photo, src: URL.createObjectURL(photo.blob) }));
+        renderGallery();
+      };
+      init();
+    })();
+  </script>
+</body>
+</html>
